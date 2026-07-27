@@ -4,8 +4,8 @@
 
 class Rook : public Piece{
     public:
-        Rook(int x, int y, int z, Color color, int n) : Piece(x, y, z, color, Type::Rook) {
-            id = (color == Color::White? "W":"B");
+        Rook(int x, int y, int z, Side color, int n) : Piece(x, y, z, color, Type::Rook) {
+            id = (color == Side::White? "W":"B");
             id += "R" + std::to_string(n);
         };
         bool isValid(const Position& to) override;

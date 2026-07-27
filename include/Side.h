@@ -1,6 +1,6 @@
 #pragma once
 
-enum class Color {
+enum class Side {
     White,
     Black
 };

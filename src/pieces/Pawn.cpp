@@ -5,8 +5,8 @@ bool Pawn::isValid(const Position& to) {
     Vector d = to - pos;
     if (d.isNull()) return false;
 
-    if (color == Color::White) return (d.x == 0 && d.y == 0 && d.z == 1);
-    if (color == Color::Black) return (d.x == 0 && d.y == 0 && d.z == -1);
+    if (color == Side::White) return (d.x == 0 && d.y == 0 && d.z == 1);
+    if (color == Side::Black) return (d.x == 0 && d.y == 0 && d.z == -1);
 }
 
 std::vector<Position> Pawn::route(Position to) {
@@ -21,8 +21,8 @@ bool Pawn::isValidCapture(const Position &to) {
 
     int x = abs(d.x), y = abs(d.y), z = d.z;
 
-    if ((color == Color::Black && z != -1) ||
-        (color == Color::White && z != +1)) {
+    if ((color == Side::Black && z != -1) ||
+        (color == Side::White && z != +1)) {
         return false;
     }
 

@@ -5,7 +5,7 @@
 #include "Move.h"
 #include "Piece.h"
 #include "Position.h"
-#include "Color.h"
+#include "Side.h"
 
 class Board {
     std::vector<Piece*> pieces;
@@ -13,14 +13,17 @@ class Board {
     public:
         Board();
         ~Board();
-        void move(Move move, Color color);
+        void move(Move move, Side color);
         bool isempty(const std::vector<Position>& positions);
         bool isinside(const Position& pos);
         void print(int type);
         void addPiece(Piece* piece);
-        bool canMove(Piece* piece, Position to, Color color);
-        Piece* findKing(Color color) const;
+        bool canMove(Piece* piece, Position to, Side color);
+        Piece* findKing(Side color) const;
         std::vector<Piece*> getPieces() const;
         Piece* whatIsInSpaceAt(int i, int j, int k) const;
         void setSpace(int i, int j, int k, Piece* piece);
+        Piece* whichPieceIsThis(std::string id) const;
+
+        void ray();
 };

@@ -1,5 +1,7 @@
+#include "raylib.h"
+
 #include "Board.h"
-#include "Color.h"
+#include "Side.h"
 #include "Rook.h"
 #include "Bishop.h"
 #include "Queen.h"
@@ -10,18 +12,18 @@
 #include "Rules.h"
 
 Board::Board() {
-    addPiece(new Rook(1, 1, 0, Color::White, 1));
-    addPiece(new Rook(0, 1, 1, Color::Black, 1));
-    addPiece(new Queen(1, 2, 0, Color::White, 1));
-    addPiece(new Queen(0, 2, 1, Color::Black, 1));
-    addPiece(new Bishop(1, 3, 0, Color::White, 1));
-    addPiece(new Bishop(0, 3, 1, Color::Black, 1));
-    addPiece(new Knight(1,4,0,Color::White, 1));
-    addPiece(new Knight(0,4,1,Color::Black, 1));
-    addPiece(new King(1,5,0,Color::White, 1));
-    addPiece(new King(0,5,1,Color::Black, 1));
-    addPiece(new Pawn(1,6,0,Color::White, 1));
-    addPiece(new Pawn(0,6,1,Color::Black, 1));
+    addPiece(new Rook(1, 1, 0, Side::White, 1));
+    addPiece(new Rook(0, 1, 1, Side::Black, 1));
+    addPiece(new Queen(1, 2, 0, Side::White, 1));
+    addPiece(new Queen(0, 2, 1, Side::Black, 1));
+    addPiece(new Bishop(1, 3, 0, Side::White, 1));
+    addPiece(new Bishop(0, 3, 1, Side::Black, 1));
+    addPiece(new Knight(1,4,0,Side::White, 1));
+    addPiece(new Knight(0,4,1,Side::Black, 1));
+    addPiece(new King(1,5,0,Side::White, 1));
+    addPiece(new King(0,5,1,Side::Black, 1));
+    addPiece(new Pawn(1,6,0,Side::White, 1));
+    addPiece(new Pawn(0,6,1,Side::Black, 1));
 }
 
 Board::~Board() {
@@ -30,11 +32,11 @@ Board::~Board() {
     }
 }
 
-void Board::move(Move move, Color color) {
-    Position from = move.getFrom();
+void Board::move(Move move, Side color) {
+    std::string id = move.getId();
+    Piece* piece = whichPieceIsThis(id);
     Position to = move.getTo();
-
-    Piece* piece = space[from.x][from.y][from.z];
+    Position from = piece->getPosicao();
 
     bool valid = canMove(piece, to, color);
     bool capture = Rules::canCapture(*this, to, color);
@@ -49,7 +51,7 @@ void Board::move(Move move, Color color) {
     }
 }
 
-bool Board::canMove(Piece *piece, Position to, Color color) {
+bool Board::canMove(Piece *piece, Position to, Side color) {
     if (piece == nullptr) {
         std::cout << "Não há peça nessa posição!";
         return false;
@@ -112,7 +114,7 @@ void Board::print(int type) {
     }
 }
 
-Piece* Board::findKing(Color color) const {
+Piece* Board::findKing(Side color) const {
     for (auto p : pieces) {
         if (p->getType() == Type::King && p->getColor() == color) {
             return p;
@@ -142,4 +144,25 @@ Piece* Board::whatIsInSpaceAt(int i, int j, int k) const {
 
 void Board::setSpace(int i, int j, int k, Piece *piece) {
     space[i][j][k] = piece;
+}
+
+Piece *Board::whichPieceIsThis(std::string id) const {
+    for (auto p : pieces) {
+        if (p->getId() == id) {
+            return p;
+        }
+    } return nullptr;
+}
+
+
+void Board::ray() {
+    InitWindow(1200, 780, "Chess3D");
+
+    while (!WindowShouldClose()) {
+        BeginDrawing();
+        ClearBackground(GREEN);
+
+
+        EndDrawing();
+    }
 }

@@ -3,6 +3,8 @@ project(Chess3D)
 
 set(CMAKE_CXX_STANDARD 20)
 
+find_package(raylib CONFIG REQUIRED)
+
 add_executable(chess src/main.cpp
         src/Piece.cpp
         include/Piece.h
@@ -13,7 +15,7 @@ add_executable(chess src/main.cpp
         include/Vector.h
         src/Position.cpp
         include/Position.h
-        include/Color.h
+        include/Side.h
         src/pieces/Rook.cpp
         include/pieces/Rook.h
         include/Type.h
@@ -31,6 +33,12 @@ add_executable(chess src/main.cpp
         src/Rules.cpp
         include/Rules.h
 )
+
+
+target_include_directories(chess PRIVATE include)
+target_include_directories(chess PRIVATE include/pieces)
+
+target_link_libraries(chess PRIVATE raylib)
 
 target_include_directories(chess PRIVATE include)
 target_include_directories(chess PRIVATE include/pieces)

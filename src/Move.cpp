@@ -4,22 +4,24 @@
 
 #include "Move.h"
 
-Move Move::decode(const std::string& input) {
-    int x, y, z;
+#include <stdexcept>
 
-    Position from(input[0] - '0',
-                  input[1] - '0',
-                  input[2] - '0');
+Move Move::decode(const std::string& input) {
+    if (input.size() != 7)
+        throw std::invalid_argument("Formato inválido.");
+
+    std::string id = input.substr(0, 3);
+
     Position to(input[4] - '0',
                 input[5] - '0',
                 input[6] - '0');
 
-    return Move(from, to);
+    return Move(id, to);
 }
 
 
-Position Move::getFrom() {
-    return from;
+std::string Move::getId() {
+    return id;
 }
 
 Position Move::getTo() {

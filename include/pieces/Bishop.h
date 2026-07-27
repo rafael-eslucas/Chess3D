@@ -1,13 +1,13 @@
 #pragma once
 
-#include "Color.h"
+#include "Side.h"
 #include "Piece.h"
 #include <vector>
 
 class Bishop : public Piece {
     public:
-        Bishop(int x, int y, int z, Color color, int n) : Piece(x, y, z, color, Type::Bishop) {
-            id = (color == Color::White? "W":"B");
+        Bishop(int x, int y, int z, Side color, int n) : Piece(x, y, z, color, Type::Bishop) {
+            id = (color == Side::White? "W":"B");
             id += "B" + std::to_string(n);
         };
         bool isValid(const Position& to) override;

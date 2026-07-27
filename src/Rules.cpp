@@ -8,7 +8,7 @@
 #include <iostream>
 
 namespace Rules {
-    bool isCheck(const Board& board, Color color) {
+    bool isCheck(const Board& board, Side color) {
         Piece* king = board.findKing(color);
         std::vector<Piece*> pieces = board.getPieces();
 
@@ -17,7 +17,7 @@ namespace Rules {
         return false;
     }
 
-    bool isKingAlive(const Board &board, Color color) {
+    bool isKingAlive(const Board &board, Side color) {
         for (auto p : board.getPieces()) {
             if (p->getType() == Type::King && p->getColor() == color) {
                 return true;
@@ -26,10 +26,10 @@ namespace Rules {
     }
 
     bool isThisTheEnd(const Board& board) {
-        if (!Rules::isKingAlive(board, Color::White)) {
+        if (!Rules::isKingAlive(board, Side::White)) {
             std::cout << "Black won!";
             return true;
-        } else if (!Rules::isKingAlive(board, Color::Black)) {
+        } else if (!Rules::isKingAlive(board, Side::Black)) {
             std::cout << "White won!";
             return true;
         } return false;
@@ -47,7 +47,7 @@ namespace Rules {
         }
     }
 
-    bool canCapture(const Board& board, Position to, Color color) {
+    bool canCapture(const Board& board, Position to, Side color) {
         Piece* atackedpiece = board.whatIsInSpaceAt(to.x, to.y, to.z);
 
         bool freeto = atackedpiece == nullptr;
