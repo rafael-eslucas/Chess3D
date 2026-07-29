@@ -22,6 +22,5 @@ std::string Piece::getId() {
 }
 
 bool Piece::isValidCapture(const Position& to) {
-    std::cout << "Piece";
     return isValid(to);
 }

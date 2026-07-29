@@ -17,7 +17,6 @@ std::vector<Position> Pawn::route(Position to) {
 }
 
 bool Pawn::isValidCapture(const Position &to) {
-    std::cout << "Pawn";
     Vector d = to - pos;
     if (d.isNull()) return false;
 

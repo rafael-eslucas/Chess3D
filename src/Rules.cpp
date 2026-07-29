@@ -14,9 +14,9 @@ namespace Rules {
 
         for (auto piece : pieces) {
             if (piece->getColor() == color) {
-                break;
+                continue;
             }
-            if (board.canMove(piece, king->getPosicao(), color)) {
+            if (board.canMove(piece, king->getPosicao(), piece->getColor())) {
                 return true;
             }
         }

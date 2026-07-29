@@ -29,8 +29,8 @@ int main() {
 
         std::cout << "\033[2J\033[H";
 
-        if (Rules::isCheck(board, Side::White)) std::cout << "Check white";
-        if (Rules::isCheck(board, Side::Black)) std::cout << "Check black";
+        if (Rules::isCheck(board, Side::White)) std::cout << "Check white!";
+        if (Rules::isCheck(board, Side::Black)) std::cout << "Check black!";
 
 
         turno = (turno == Side::White) ? Side::Black : Side::White;

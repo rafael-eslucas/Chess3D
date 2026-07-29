@@ -9,7 +9,7 @@
 
 class Board {
     std::vector<Piece*> pieces;
-    Piece* space[8][8][8] = {};
+    Piece* space[6][6][6] = {};
     public:
         Board();
         ~Board();

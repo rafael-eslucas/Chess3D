@@ -12,18 +12,18 @@
 #include "Rules.h"
 
 Board::Board() {
-    addPiece(new Rook(1, 1, 0, Side::White, 1));
-    addPiece(new Rook(0, 1, 1, Side::Black, 1));
-    addPiece(new Queen(1, 2, 0, Side::White, 1));
-    addPiece(new Queen(0, 2, 1, Side::Black, 1));
-    addPiece(new Bishop(1, 3, 0, Side::White, 1));
-    addPiece(new Bishop(0, 3, 1, Side::Black, 1));
-    addPiece(new Knight(1,4,0,Side::White, 1));
-    addPiece(new Knight(0,4,1,Side::Black, 1));
-    addPiece(new King(1,5,0,Side::White, 1));
-    addPiece(new King(0,5,1,Side::Black, 1));
-    addPiece(new Pawn(1,6,0,Side::White, 1));
-    addPiece(new Pawn(0,6,1,Side::Black, 1));
+    addPiece(new Rook(0, 0, 0, Side::White, 1));
+    addPiece(new Rook(5, 0, 2, Side::Black, 1));
+    addPiece(new Queen(0, 1, 0, Side::White, 1));
+    addPiece(new Queen(5, 1, 2, Side::Black, 1));
+    addPiece(new Bishop(0, 2, 0, Side::White, 1));
+    addPiece(new Bishop(5, 2, 2, Side::Black, 1));
+    addPiece(new Knight(0,3,0,Side::White, 1));
+    addPiece(new Knight(5,3,2,Side::Black, 1));
+    addPiece(new King(0,4,0,Side::White, 1));
+    addPiece(new King(5,4,2,Side::Black, 1));
+    addPiece(new Pawn(0,5,0,Side::White, 1));
+    addPiece(new Pawn(5,5,2,Side::Black, 1));
 }
 
 Board::~Board() {
@@ -86,23 +86,23 @@ bool Board::isempty(const std::vector<Position>& positions) const{
 
 
 bool Board::isinside(const Position &pos) const {
-    return (pos.x >= 0 && pos.x < 8 &&
-            pos.y >= 0 && pos.y < 8 &&
-            pos.z >= 0 && pos.z < 8 );
+    return (pos.x >= 0 && pos.x < 6 &&
+            pos.y >= 0 && pos.y < 6 &&
+            pos.z >= 0 && pos.z < 6 );
 }
 
 void Board::print(int type) {
     if (type == 0) {
-        for (int j = 0; j < 4; j++) {
+        for (int j = 0; j < 3; j++) {
             std::cout << "  ";
-            for (int k = 0; k < 8; k++) {
+            for (int k = 0; k < 6; k++) {
                 std::cout << " " << k+1 << "   ";
             } std::cout << "    ";
         } std::cout << std::endl;
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 4; j++) {
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 3; j++) {
                 std::cout << i+1 << " ";
-                for (int k = 0; k < 8; k++) {
+                for (int k = 0; k < 6; k++) {
                     if (space[k][i][j] == nullptr) {
                         std::cout << "[  ] ";
                     } else {
@@ -112,16 +112,16 @@ void Board::print(int type) {
             } std::cout << "\n";
         } std::cout << "\n";
 
-        for (int j = 0; j < 4; j++) {
+        for (int j = 0; j < 3; j++) {
             std::cout << "  ";
-            for (int k = 0; k < 8; k++) {
+            for (int k = 0; k < 6; k++) {
                 std::cout << " " << k+1 << "   ";
             } std::cout << "    ";
         } std::cout << std::endl;
-        for (int i = 0; i < 8; i++) {
-            for (int j = 4; j < 8; j++) {
+        for (int i = 0; i < 6; i++) {
+            for (int j = 3; j < 6; j++) {
                 std::cout << i+1 << " ";
-                for (int k = 0; k < 8; k++) {
+                for (int k = 0; k < 6; k++) {
                     if (space[k][i][j] == nullptr) {
                         std::cout << "[  ] ";
                     } else {
@@ -171,7 +171,7 @@ void Board::deletePiece(Piece *piece) {
 }
 
 Piece* Board::whatIsInSpaceAt(int i, int j, int k) const {
-    if (i >= 0 && i <= 7 && j >= 0 && j <= 7 && k >= 0 && k <= 7) {
+    if (i >= 0 && i <= 5 && j >= 0 && j <= 5 && k >= 0 && k <= 5) {
         return space[i][j][k];
     }
     return nullptr;
