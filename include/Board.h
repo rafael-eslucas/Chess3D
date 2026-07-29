@@ -14,13 +14,14 @@ class Board {
         Board();
         ~Board();
         void move(Move move, Side color);
-        bool isempty(const std::vector<Position>& positions);
-        bool isinside(const Position& pos);
+        bool isempty(const std::vector<Position>& positions) const;
+        bool isinside(const Position& pos) const;
         void print(int type);
         void addPiece(Piece* piece);
-        bool canMove(Piece* piece, Position to, Side color);
+        bool canMove(Piece* piece, Position to, Side color) const;
         Piece* findKing(Side color) const;
         std::vector<Piece*> getPieces() const;
+        void deletePiece(Piece* piece);
         Piece* whatIsInSpaceAt(int i, int j, int k) const;
         void setSpace(int i, int j, int k, Piece* piece);
         Piece* whichPieceIsThis(std::string id) const;

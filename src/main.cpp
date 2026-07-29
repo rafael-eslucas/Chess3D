@@ -1,4 +1,6 @@
 #include <iostream>
+#include <raylib.h>
+
 #include "Move.h"
 #include "Board.h"
 #include "Rules.h"
@@ -16,9 +18,8 @@ int main() {
     while (true) {
         std::cout << "Turno das " << (turno == Side::White ? "brancas" : "pretas") << "\n\n";
         board.print(0);
-        std::cout << std::endl;
         board.print(1);
-        board.ray();
+        std::cout << std::endl;
         std::cout << std::endl;
         cin >> movestr;
         move = Move::decode(movestr);
@@ -27,6 +28,9 @@ int main() {
         if (Rules::isThisTheEnd(board)) return 0;
 
         std::cout << "\033[2J\033[H";
+
+        if (Rules::isCheck(board, Side::White)) std::cout << "Check white";
+        if (Rules::isCheck(board, Side::Black)) std::cout << "Check black";
 
 
         turno = (turno == Side::White) ? Side::Black : Side::White;

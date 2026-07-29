@@ -12,9 +12,9 @@ Move Move::decode(const std::string& input) {
 
     std::string id = input.substr(0, 3);
 
-    Position to(input[4] - '0',
-                input[5] - '0',
-                input[6] - '0');
+    Position to(input[4] - '0' - 1,
+                input[5] - '0' - 1,
+                input[6] - '0' - 1);
 
     return Move(id, to);
 }

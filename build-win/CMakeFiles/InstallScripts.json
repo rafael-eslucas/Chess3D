@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/rafael/projects/chess3d/build-win/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

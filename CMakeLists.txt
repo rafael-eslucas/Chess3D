@@ -39,6 +39,3 @@ target_include_directories(chess PRIVATE include)
 target_include_directories(chess PRIVATE include/pieces)
 
 target_link_libraries(chess PRIVATE raylib)
-
-target_include_directories(chess PRIVATE include)
-target_include_directories(chess PRIVATE include/pieces)

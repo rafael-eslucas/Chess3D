@@ -35,6 +35,8 @@ Board::~Board() {
 void Board::move(Move move, Side color) {
     std::string id = move.getId();
     Piece* piece = whichPieceIsThis(id);
+    if (!piece)
+        return;
     Position to = move.getTo();
     Position from = piece->getPosicao();
 
@@ -51,22 +53,29 @@ void Board::move(Move move, Side color) {
     }
 }
 
-bool Board::canMove(Piece *piece, Position to, Side color) {
+bool Board::canMove(Piece *piece, Position to, Side color) const {
     if (piece == nullptr) {
         std::cout << "Não há peça nessa posição!";
         return false;
     }
 
-    if (piece->getColor() != color || !piece->isValid(to)  || !(this->isinside(to))) {
-        return false;
-    };
+    bool cancapture = Rules::canCapture(*this, to, color);
     bool freepath = this->isempty(piece->route(to));
-    std::cout << freepath;
 
-    return freepath && (Rules::canCapture(*this, to, color) || space[to.x][to.y][to.z] == nullptr);
+    if (piece->getColor() != color || !(this->isinside(to))) {
+        return false;
+    }
+
+    bool valid = piece->isValid(to);
+
+    if (piece->getType() == Type::Pawn && cancapture) {
+        valid = piece->isValidCapture(to);
+    }
+
+    return valid && freepath && (cancapture || space[to.x][to.y][to.z] == nullptr);
 }
 
-bool Board::isempty(const std::vector<Position>& positions) {
+bool Board::isempty(const std::vector<Position>& positions) const{
     for (const auto& pos : positions) {
         if (space[pos.x][pos.y][pos.z] != nullptr) {
             return false;
@@ -76,7 +85,7 @@ bool Board::isempty(const std::vector<Position>& positions) {
 }
 
 
-bool Board::isinside(const Position &pos) {
+bool Board::isinside(const Position &pos) const {
     return (pos.x >= 0 && pos.x < 8 &&
             pos.y >= 0 && pos.y < 8 &&
             pos.z >= 0 && pos.z < 8 );
@@ -84,8 +93,15 @@ bool Board::isinside(const Position &pos) {
 
 void Board::print(int type) {
     if (type == 0) {
+        for (int j = 0; j < 4; j++) {
+            std::cout << "  ";
+            for (int k = 0; k < 8; k++) {
+                std::cout << " " << k+1 << "   ";
+            } std::cout << "    ";
+        } std::cout << std::endl;
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 4; j++) {
+                std::cout << i+1 << " ";
                 for (int k = 0; k < 8; k++) {
                     if (space[k][i][j] == nullptr) {
                         std::cout << "[  ] ";
@@ -95,8 +111,16 @@ void Board::print(int type) {
                 } std::cout << "    ";
             } std::cout << "\n";
         } std::cout << "\n";
+
+        for (int j = 0; j < 4; j++) {
+            std::cout << "  ";
+            for (int k = 0; k < 8; k++) {
+                std::cout << " " << k+1 << "   ";
+            } std::cout << "    ";
+        } std::cout << std::endl;
         for (int i = 0; i < 8; i++) {
             for (int j = 4; j < 8; j++) {
+                std::cout << i+1 << " ";
                 for (int k = 0; k < 8; k++) {
                     if (space[k][i][j] == nullptr) {
                         std::cout << "[  ] ";
@@ -131,12 +155,23 @@ void Board::addPiece(Piece *piece) {
     }
 }
 
-std::vector<Piece *> Board::getPieces() const {
+std::vector<Piece*> Board::getPieces() const{
     return pieces;
 }
 
+void Board::deletePiece(Piece *piece) {
+    for (int i = 0; i < pieces.size(); i++) {
+        if (pieces[i] == piece) {
+            pieces.erase(pieces.begin() + i);
+            space[piece->getPosicao().x][piece->getPosicao().y][piece->getPosicao().z] = nullptr;
+            delete piece;
+            break;
+        }
+    }
+}
+
 Piece* Board::whatIsInSpaceAt(int i, int j, int k) const {
-    if (i > 0 && i < 8 && j > 0 && j < 8 && k > 0 && k < 8) {
+    if (i >= 0 && i <= 7 && j >= 0 && j <= 7 && k >= 0 && k <= 7) {
         return space[i][j][k];
     }
     return nullptr;
@@ -160,7 +195,8 @@ void Board::ray() {
 
     while (!WindowShouldClose()) {
         BeginDrawing();
-        ClearBackground(GREEN);
+        ClearBackground(RAYWHITE);
+
 
 
         EndDrawing();

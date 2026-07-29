@@ -1,3 +1,4 @@
+#include <iostream>
 #include "Piece.h"
 
 Position Piece::getPosicao() {
@@ -18,4 +19,9 @@ Type Piece::getType() {
 
 std::string Piece::getId() {
     return id;
+}
+
+bool Piece::isValidCapture(const Position& to) {
+    std::cout << "Piece";
+    return isValid(to);
 }

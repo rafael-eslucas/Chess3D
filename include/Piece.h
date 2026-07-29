@@ -22,4 +22,6 @@ class Piece {
         Type getType();
         virtual std::vector<Position> route(Position para) = 0;
         std::string getId();
+
+        virtual bool isValidCapture(const Position& to);
 };

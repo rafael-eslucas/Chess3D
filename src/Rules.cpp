@@ -12,8 +12,14 @@ namespace Rules {
         Piece* king = board.findKing(color);
         std::vector<Piece*> pieces = board.getPieces();
 
-
-
+        for (auto piece : pieces) {
+            if (piece->getColor() == color) {
+                break;
+            }
+            if (board.canMove(piece, king->getPosicao(), color)) {
+                return true;
+            }
+        }
         return false;
     }
 
@@ -37,14 +43,7 @@ namespace Rules {
 
     void capture(Board& board, Position to) {
         Piece* piece = board.whatIsInSpaceAt(to.x, to.y, to.z);
-        for (int i = 0; i < board.getPieces().size(); i++) {
-            if (board.getPieces()[i] == piece) {
-                board.getPieces().erase(board.getPieces().begin() + i);
-                board.setSpace(to.x, to.y, to.z, nullptr);
-                delete piece;
-                break;
-            }
-        }
+        board.deletePiece(piece);
     }
 
     bool canCapture(const Board& board, Position to, Side color) {

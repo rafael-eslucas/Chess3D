@@ -9,6 +9,6 @@ class Pawn : public Piece {
             id += "P" + std::to_string(n);
         };
         bool isValid(const Position& to) override;
-        bool isValidCapture(const Position& to);
+        bool isValidCapture(const Position& to) override;
         std::vector<Position> route(Position to) override;
 };
