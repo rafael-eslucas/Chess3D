@@ -32,6 +32,8 @@ add_executable(chess src/main.cpp
         include/pieces/Pawn.h
         src/Rules.cpp
         include/Rules.h
+        include/Last.h
+        include/Last.h
 )
 
 

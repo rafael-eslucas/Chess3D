@@ -24,3 +24,11 @@ std::string Piece::getId() {
 bool Piece::isValidCapture(const Position& to) {
     return isValid(to);
 }
+
+bool Piece::isAlive() {
+    return alive;
+}
+
+void Piece::setAlive(bool alive) {
+    this->alive = alive;
+}

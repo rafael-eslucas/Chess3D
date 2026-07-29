@@ -32,11 +32,11 @@ Board::~Board() {
     }
 }
 
-void Board::move(Move move, Side color) {
+bool Board::move(Move move, Side color) {
     std::string id = move.getId();
     Piece* piece = whichPieceIsThis(id);
     if (!piece)
-        return;
+        return false;
     Position to = move.getTo();
     Position from = piece->getPosicao();
 
@@ -44,6 +44,12 @@ void Board::move(Move move, Side color) {
     bool capture = Rules::canCapture(*this, to, color);
 
     if (valid) {
+        this->last.moved = piece;
+        this->last.captured = nullptr;
+        this->last.from = piece->getPosicao();
+        this->last.to = to;
+        std::cout << "\n" << last.moved->getId();
+
         if (capture) {
             Rules::capture(*this, to);
         }
@@ -51,6 +57,26 @@ void Board::move(Move move, Side color) {
         space[to.x][to.y][to.z] = piece;
         piece->setPosicao(to);
     }
+    std::cout << "Valid: " << valid << std::endl;
+    return valid;
+}
+
+bool Board::play(Move move, Side color) {
+    if (!this->move(move, color))
+        return false;
+
+    if (Rules::isCheck(*this, color)) {
+        undo();
+        std::cout << "Movimento inválido: Cheque";
+        return false;
+    }
+    std::cout << "\nPASSOUVERIFICAÇAOPLAY\n";
+    return true;
+}
+
+
+void Board::setLastCapture(Piece* piece) {
+    last.captured = piece;
 }
 
 bool Board::canMove(Piece *piece, Position to, Side color) const {
@@ -61,6 +87,8 @@ bool Board::canMove(Piece *piece, Position to, Side color) const {
 
     bool cancapture = Rules::canCapture(*this, to, color);
     bool freepath = this->isempty(piece->route(to));
+    bool check = false;
+
 
     if (piece->getColor() != color || !(this->isinside(to))) {
         return false;
@@ -72,7 +100,7 @@ bool Board::canMove(Piece *piece, Position to, Side color) const {
         valid = piece->isValidCapture(to);
     }
 
-    return valid && freepath && (cancapture || space[to.x][to.y][to.z] == nullptr);
+    return valid && freepath && (cancapture || space[to.x][to.y][to.z] == nullptr) && !check;
 }
 
 bool Board::isempty(const std::vector<Position>& positions) const{
@@ -83,7 +111,6 @@ bool Board::isempty(const std::vector<Position>& positions) const{
     }
     return true;
 }
-
 
 bool Board::isinside(const Position &pos) const {
     return (pos.x >= 0 && pos.x < 6 &&
@@ -159,12 +186,11 @@ std::vector<Piece*> Board::getPieces() const{
     return pieces;
 }
 
-void Board::deletePiece(Piece *piece) {
+void Board::kill(Piece *piece) {
     for (int i = 0; i < pieces.size(); i++) {
         if (pieces[i] == piece) {
-            pieces.erase(pieces.begin() + i);
             space[piece->getPosicao().x][piece->getPosicao().y][piece->getPosicao().z] = nullptr;
-            delete piece;
+            piece->setAlive(false);
             break;
         }
     }
@@ -189,9 +215,18 @@ Piece *Board::whichPieceIsThis(std::string id) const {
     } return nullptr;
 }
 
+void Board::undo() {
+    std::cout << "\nUNDOING\n";
+    space[last.to.x][last.to.y][last.to.z] = last.captured;
+    if (last.captured) {
+        last.captured->setAlive(true);
+    }
+    space[last.from.x][last.from.y][last.from.z] = last.moved;
+    last.moved->setPosicao(last.from);
+}
 
 void Board::ray() {
-    InitWindow(1200, 780, "Chess3D");
+    InitWindow(1280, 720, "Chess3D");
 
     while (!WindowShouldClose()) {
         BeginDrawing();
@@ -201,4 +236,6 @@ void Board::ray() {
 
         EndDrawing();
     }
+
+    CloseWindow();
 }

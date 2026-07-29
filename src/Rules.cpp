@@ -42,8 +42,10 @@ namespace Rules {
     }
 
     void capture(Board& board, Position to) {
+        std::cout << "\nCAPTURING\n";
         Piece* piece = board.whatIsInSpaceAt(to.x, to.y, to.z);
-        board.deletePiece(piece);
+        board.setLastCapture(piece);
+        board.kill(piece);
     }
 
     bool canCapture(const Board& board, Position to, Side color) {

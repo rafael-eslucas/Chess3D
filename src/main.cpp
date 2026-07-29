@@ -23,7 +23,13 @@ int main() {
         std::cout << std::endl;
         cin >> movestr;
         move = Move::decode(movestr);
-        board.move(move, turno);
+
+        if (board.play(move, turno)) {
+            turno = (turno == Side::White) ? Side::Black : Side::White;
+            std::cout << "\nVÁLIDO\n";
+        } else {
+            std::cout << "\nINVÁLIDO\n";
+        }
 
         if (Rules::isThisTheEnd(board)) return 0;
 
@@ -31,9 +37,6 @@ int main() {
 
         if (Rules::isCheck(board, Side::White)) std::cout << "Check white!";
         if (Rules::isCheck(board, Side::Black)) std::cout << "Check black!";
-
-
-        turno = (turno == Side::White) ? Side::Black : Side::White;
     }
 
     return 0;

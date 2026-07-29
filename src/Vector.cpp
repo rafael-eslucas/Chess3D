@@ -20,9 +20,9 @@ bool Vector::isAxis() const {
 }
 
 bool Vector::isPlaneDiagonal() const {
-    return ((std::abs(x) == std::abs(y) && x == 0) ||
+    return ((std::abs(x) == std::abs(y) && z == 0) ||
             (std::abs(x) == std::abs(z) && y == 0) ||
-            (std::abs(y) == std::abs(z) && z == 0) );
+            (std::abs(y) == std::abs(z) && x == 0) );
 }
 
 bool Vector::isSpaceDiagonal() const {

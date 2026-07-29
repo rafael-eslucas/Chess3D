@@ -13,6 +13,7 @@ class Piece {
         Type type;
         Side color;
         std::string id;
+        bool alive = true;
     public:
         Piece(int x, int y, int z, Side color, Type type) : pos(x, y, z), color(color), type(type) {};
         virtual bool isValid(const Position& to) = 0;
@@ -22,6 +23,8 @@ class Piece {
         Type getType();
         virtual std::vector<Position> route(Position para) = 0;
         std::string getId();
+        void setAlive(bool alive);
+        bool isAlive();
 
         virtual bool isValidCapture(const Position& to);
 };
