@@ -122,6 +122,7 @@ CMakeFiles/chess.dir/src/Board.cpp.obj: \
  /home/rafael/projects/chess3d/include/Vector.h \
  /home/rafael/projects/chess3d/include/Side.h \
  /home/rafael/projects/chess3d/include/Type.h \
+ /home/rafael/projects/chess3d/include/Last.h \
  /home/rafael/projects/chess3d/include/pieces/Rook.h \
  /home/rafael/projects/chess3d/include/pieces/Bishop.h \
  /home/rafael/projects/chess3d/include/pieces/Queen.h \

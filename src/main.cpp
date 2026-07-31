@@ -4,22 +4,33 @@
 #include "Move.h"
 #include "Board.h"
 #include "Rules.h"
+#include "Screen.h"
 
 using namespace std;
 
 int main() {
-    Board board;
+    Game game;
+    Screen screen(1600, 900, 50, 30, 60);
 
     string movestr;
     Move move("", 0, 0, 0);
 
     Side turno = Side::White;
+    Position pos;
+    Piece* selected;
+    screen.show(game);
+
+
+
+
+    /*Board board;
+    std::string movestr; Move move;
+    Side turno = Side::White;
 
     while (true) {
-        std::cout << "Turno das " << (turno == Side::White ? "brancas" : "pretas") << "\n\n";
         board.print(0);
-        board.print(1);
         std::cout << std::endl;
+        std::cout << "Turno das " << (turno == Side::White ? "brancas" : "pretas") << "\n\n";
         std::cout << std::endl;
         cin >> movestr;
         move = Move::decode(movestr);
@@ -37,7 +48,7 @@ int main() {
 
         if (Rules::isCheck(board, Side::White)) std::cout << "Check white!";
         if (Rules::isCheck(board, Side::Black)) std::cout << "Check black!";
-    }
+    }*/
 
     return 0;
 }

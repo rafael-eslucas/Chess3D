@@ -12,18 +12,70 @@
 #include "Rules.h"
 
 Board::Board() {
+    /* ========== WHITE ========== */
     addPiece(new Rook(0, 0, 0, Side::White, 1));
-    addPiece(new Rook(5, 0, 2, Side::Black, 1));
-    addPiece(new Queen(0, 1, 0, Side::White, 1));
-    addPiece(new Queen(5, 1, 2, Side::Black, 1));
-    addPiece(new Bishop(0, 2, 0, Side::White, 1));
-    addPiece(new Bishop(5, 2, 2, Side::Black, 1));
-    addPiece(new Knight(0,3,0,Side::White, 1));
-    addPiece(new Knight(5,3,2,Side::Black, 1));
-    addPiece(new King(0,4,0,Side::White, 1));
-    addPiece(new King(5,4,2,Side::Black, 1));
-    addPiece(new Pawn(0,5,0,Side::White, 1));
-    addPiece(new Pawn(5,5,2,Side::Black, 1));
+    addPiece(new Rook(5,0,0,Side::White, 2));
+    addPiece(new Rook(0,5,0, Side::White, 3));
+    addPiece(new Rook(5,5,0, Side::White, 4));
+
+    addPiece(new Bishop(2, 0, 0, Side::White, 1));
+    addPiece(new Bishop(3, 0, 0, Side::White, 2));
+    addPiece(new Bishop(0, 2, 0, Side::White, 3));
+    addPiece(new Bishop(0, 3, 0, Side::White, 4));
+    addPiece(new Bishop(2, 5, 0, Side::White, 5));
+    addPiece(new Bishop(3, 5, 0, Side::White, 6));
+    addPiece(new Bishop(5, 2, 0, Side::White, 7));
+    addPiece(new Bishop(5, 3, 0, Side::White, 8));
+
+    addPiece(new Knight(1,1,0,Side::White, 1));
+    addPiece(new Knight(4,1,0,Side::White, 2));
+    addPiece(new Knight(4,4,0,Side::White, 3));
+    addPiece(new Knight(1,4,0,Side::White, 4));
+
+    addPiece(new Pawn(2,3,0,Side::White, 1));
+    addPiece(new Pawn(3,2,0,Side::White, 2));
+
+    addPiece(new Queen(2, 2, 0, Side::White, 1));
+    addPiece(new King(3, 3, 0, Side::White, 1));
+    int n = 3;
+    for (int i = 0; i < 6; i++) {
+        for (int j = 0; j < 6; j++) {
+            addPiece(new Pawn(i,j,1,Side::White, n));
+            n++;
+        }
+    }
+
+    /* ========== BLACK ========== */
+    addPiece(new Rook(0, 0, 5, Side::Black, 1));
+    addPiece(new Rook(5,0,5,Side::Black, 2));
+    addPiece(new Rook(0,5,5, Side::Black, 3));
+    addPiece(new Rook(5,5,5, Side::Black, 4));
+
+    addPiece(new Bishop(2, 0, 5, Side::Black, 1));
+    addPiece(new Bishop(3, 0, 5, Side::Black, 2));
+    addPiece(new Bishop(0, 2, 5, Side::Black, 3));
+    addPiece(new Bishop(0, 3, 5, Side::Black, 4));
+    addPiece(new Bishop(2, 5, 5, Side::Black, 5));
+    addPiece(new Bishop(3, 5, 5, Side::Black, 6));
+    addPiece(new Bishop(5, 2, 5, Side::Black, 7));
+    addPiece(new Bishop(5, 3, 5, Side::Black, 8));
+
+    addPiece(new Knight(1,1,5,Side::Black, 1));
+    addPiece(new Knight(4,1,5,Side::Black, 2));
+    addPiece(new Knight(4,4,5,Side::Black, 3));
+    addPiece(new Knight(1,4,5,Side::Black, 4));
+
+    addPiece(new Pawn(2,3,5,Side::Black, 1));
+    addPiece(new Pawn(3,2,5,Side::Black, 2));
+
+    addPiece(new Queen(2, 2, 5, Side::Black, 1));
+    addPiece(new King(3, 3, 5, Side::Black, 1));
+
+    for (int i = 0; i < 6; i++) {
+        for (int j = 0; j < 6; j++) {
+            addPiece(new Pawn(i,j,4,Side::Black, i * 6 + j + 3));
+        }
+    }
 }
 
 Board::~Board() {
@@ -35,13 +87,18 @@ Board::~Board() {
 bool Board::move(Move move, Side color) {
     std::string id = move.getId();
     Piece* piece = whichPieceIsThis(id);
-    if (!piece)
+    std::cout << "Piece " << piece->getId() << " is being moved" << std::endl;
+    if (!piece) {
         return false;
+    }
     Position to = move.getTo();
     Position from = piece->getPosicao();
+    std::cout << "FROM: " << from.x << " " <<from.y << " " << from.z << " TO: " << to.x << " " << to.y << " " << to.z << std::endl;
 
     bool valid = canMove(piece, to, color);
+    std::cout << "VALID: " << valid << std::endl;
     bool capture = Rules::canCapture(*this, to, color);
+
 
     if (valid) {
         this->last.moved = piece;
@@ -57,11 +114,11 @@ bool Board::move(Move move, Side color) {
         space[to.x][to.y][to.z] = piece;
         piece->setPosicao(to);
     }
-    std::cout << "Valid: " << valid << std::endl;
     return valid;
 }
 
 bool Board::play(Move move, Side color) {
+    std::cout << "PLAYING" << std::endl;
     if (!this->move(move, color))
         return false;
 
@@ -70,7 +127,6 @@ bool Board::play(Move move, Side color) {
         std::cout << "Movimento inválido: Cheque";
         return false;
     }
-    std::cout << "\nPASSOUVERIFICAÇAOPLAY\n";
     return true;
 }
 
@@ -90,7 +146,12 @@ bool Board::canMove(Piece *piece, Position to, Side color) const {
     bool check = false;
 
 
-    if (piece->getColor() != color || !(this->isinside(to))) {
+    if (piece->getSide() != color) {
+        std::cout << "COLOR: PIECE: " << (piece->getSide()==Side::White? "white" : "black") << " TURN: " << (color==Side::White? "white" : "black") << std::endl;
+        return false;
+    }
+    if (!this->isinside(to)) {
+        std::cout << "NOTINSIDE" << std::endl;
         return false;
     }
 
@@ -120,29 +181,32 @@ bool Board::isinside(const Position &pos) const {
 
 void Board::print(int type) {
     if (type == 0) {
-        for (int j = 0; j < 3; j++) {
-            std::cout << "  ";
-            for (int k = 0; k < 6; k++) {
-                std::cout << " " << k+1 << "   ";
-            } std::cout << "    ";
-        } std::cout << std::endl;
-        for (int i = 0; i < 6; i++) {
-            for (int j = 0; j < 3; j++) {
-                std::cout << i+1 << " ";
+        for (int l = 2; l <= 6; l+=2) {
+            for (int j = 0; j < 2; j++) {
+                std::cout << "  ";
                 for (int k = 0; k < 6; k++) {
-                    if (space[k][i][j] == nullptr) {
-                        std::cout << "[  ] ";
-                    } else {
-                        std::cout << "[" << space[k][i][j]->getId()[0] << space[k][i][j]->getId()[1] << "] ";
-                    }
+                    std::cout << "   " << k+1 << "   ";
                 } std::cout << "    ";
+            } std::cout << std::endl;
+            for (int i = 0; i < 6; i++) {
+                for (int j = l-2; j < l; j++) {
+                    std::cout << i+1 << " ";
+                    for (int k = 0; k < 6; k++) {
+                        if (space[k][i][j] == nullptr) {
+                            std::cout << "[    ] ";
+                        } else {
+                            std::cout << "[" << space[k][i][j]->getId().substr(0, 4) << "] ";
+                        }
+                    } std::cout << "    ";
+                } std::cout << "\n";
             } std::cout << "\n";
-        } std::cout << "\n";
+        }
 
+        /*
         for (int j = 0; j < 3; j++) {
             std::cout << "  ";
             for (int k = 0; k < 6; k++) {
-                std::cout << " " << k+1 << "   ";
+                std::cout << "  " << k+1 << "   ";
             } std::cout << "    ";
         } std::cout << std::endl;
         for (int i = 0; i < 6; i++) {
@@ -150,24 +214,28 @@ void Board::print(int type) {
                 std::cout << i+1 << " ";
                 for (int k = 0; k < 6; k++) {
                     if (space[k][i][j] == nullptr) {
-                        std::cout << "[  ] ";
+                        std::cout << "[   ] ";
                     } else {
-                        std::cout << "[" << space[k][i][j]->getId()[0] << space[k][i][j]->getId()[1] << "] ";
+                        std::cout << "[" << space[k][i][j]->getId().substr(0, 3) << "] ";
                     }
                 } std::cout << "    ";
             } std::cout << "\n";
-        }
+        }*/
     }
     else if (type == 1) {
+        Type t = Type::Rook;
         for (auto peca : pieces) {
-            std::cout << peca->getId() << ":" << "(" << peca->getPosicao().x << peca->getPosicao().y << peca->getPosicao().z << ") \n";
+            std::cout << peca->getId() << ":" << "(" << peca->getPosicao().x << peca->getPosicao().y << peca->getPosicao().z << ")  ";
+            if (t != peca->getType()) {
+                std::cout << "\n";
+            } t = peca->getType();
         }
     }
 }
 
 Piece* Board::findKing(Side color) const {
     for (auto p : pieces) {
-        if (p->getType() == Type::King && p->getColor() == color) {
+        if (p->getType() == Type::King && p->getSide() == color) {
             return p;
         }
     }
@@ -223,19 +291,4 @@ void Board::undo() {
     }
     space[last.from.x][last.from.y][last.from.z] = last.moved;
     last.moved->setPosicao(last.from);
-}
-
-void Board::ray() {
-    InitWindow(1280, 720, "Chess3D");
-
-    while (!WindowShouldClose()) {
-        BeginDrawing();
-        ClearBackground(RAYWHITE);
-
-
-
-        EndDrawing();
-    }
-
-    CloseWindow();
 }

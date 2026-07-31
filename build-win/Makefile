@@ -160,6 +160,30 @@ src/Board.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/src/Board.cpp.s
 .PHONY : src/Board.cpp.s
 
+src/Game.obj: src/Game.cpp.obj
+.PHONY : src/Game.obj
+
+# target to build an object file
+src/Game.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/src/Game.cpp.obj
+.PHONY : src/Game.cpp.obj
+
+src/Game.i: src/Game.cpp.i
+.PHONY : src/Game.i
+
+# target to preprocess a source file
+src/Game.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/src/Game.cpp.i
+.PHONY : src/Game.cpp.i
+
+src/Game.s: src/Game.cpp.s
+.PHONY : src/Game.s
+
+# target to generate assembly for a file
+src/Game.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/src/Game.cpp.s
+.PHONY : src/Game.cpp.s
+
 src/Move.obj: src/Move.cpp.obj
 .PHONY : src/Move.obj
 
@@ -255,6 +279,30 @@ src/Rules.s: src/Rules.cpp.s
 src/Rules.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/src/Rules.cpp.s
 .PHONY : src/Rules.cpp.s
+
+src/Screen.obj: src/Screen.cpp.obj
+.PHONY : src/Screen.obj
+
+# target to build an object file
+src/Screen.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/src/Screen.cpp.obj
+.PHONY : src/Screen.cpp.obj
+
+src/Screen.i: src/Screen.cpp.i
+.PHONY : src/Screen.i
+
+# target to preprocess a source file
+src/Screen.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/src/Screen.cpp.i
+.PHONY : src/Screen.cpp.i
+
+src/Screen.s: src/Screen.cpp.s
+.PHONY : src/Screen.s
+
+# target to generate assembly for a file
+src/Screen.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/src/Screen.cpp.s
+.PHONY : src/Screen.cpp.s
 
 src/Vector.obj: src/Vector.cpp.obj
 .PHONY : src/Vector.obj
@@ -448,6 +496,30 @@ src/pieces/Rook.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/src/pieces/Rook.cpp.s
 .PHONY : src/pieces/Rook.cpp.s
 
+utils/utils.obj: utils/utils.cpp.obj
+.PHONY : utils/utils.obj
+
+# target to build an object file
+utils/utils.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/utils/utils.cpp.obj
+.PHONY : utils/utils.cpp.obj
+
+utils/utils.i: utils/utils.cpp.i
+.PHONY : utils/utils.i
+
+# target to preprocess a source file
+utils/utils.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/utils/utils.cpp.i
+.PHONY : utils/utils.cpp.i
+
+utils/utils.s: utils/utils.cpp.s
+.PHONY : utils/utils.s
+
+# target to generate assembly for a file
+utils/utils.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/utils/utils.cpp.s
+.PHONY : utils/utils.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -461,6 +533,9 @@ help:
 	@echo "... src/Board.obj"
 	@echo "... src/Board.i"
 	@echo "... src/Board.s"
+	@echo "... src/Game.obj"
+	@echo "... src/Game.i"
+	@echo "... src/Game.s"
 	@echo "... src/Move.obj"
 	@echo "... src/Move.i"
 	@echo "... src/Move.s"
@@ -473,6 +548,9 @@ help:
 	@echo "... src/Rules.obj"
 	@echo "... src/Rules.i"
 	@echo "... src/Rules.s"
+	@echo "... src/Screen.obj"
+	@echo "... src/Screen.i"
+	@echo "... src/Screen.s"
 	@echo "... src/Vector.obj"
 	@echo "... src/Vector.i"
 	@echo "... src/Vector.s"
@@ -497,6 +575,9 @@ help:
 	@echo "... src/pieces/Rook.obj"
 	@echo "... src/pieces/Rook.i"
 	@echo "... src/pieces/Rook.s"
+	@echo "... utils/utils.obj"
+	@echo "... utils/utils.i"
+	@echo "... utils/utils.s"
 .PHONY : help
 
 

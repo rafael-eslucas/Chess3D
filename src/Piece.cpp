@@ -9,7 +9,7 @@ void Piece::setPosicao(const Position& p) {
     pos = p;
 }
 
-Side Piece::getColor() {
+Side Piece::getSide() {
     return color;
 }
 

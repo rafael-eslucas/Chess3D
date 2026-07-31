@@ -6,7 +6,6 @@
 bool Queen::isValid(const Position& to) {
     Vector d = this->pos - to;
     if (d.isNull()) return false;
-    std::cout << "Queenvalidation:" << d.isAxis() << d.isPlaneDiagonal() << d.isSpaceDiagonal() << std::endl;
 
     return d.isAxis() || d.isPlaneDiagonal() || d.isSpaceDiagonal();
 }

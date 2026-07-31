@@ -151,6 +151,10 @@ CMakeFiles/chess.dir/src/main.cpp.obj: \
  /usr/x86_64-w64-mingw32/include/c++/14.2.0/bits/ostream.tcc \
  /usr/x86_64-w64-mingw32/include/c++/14.2.0/istream \
  /usr/x86_64-w64-mingw32/include/c++/14.2.0/bits/istream.tcc \
+ /home/rafael/raylib-windows/include/raylib.h \
+ /usr/lib/gcc/x86_64-w64-mingw32/14.2.0/include/stdarg.h \
+ /usr/x86_64-w64-mingw32/include/stdarg.h \
+ /usr/x86_64-w64-mingw32/include/_mingw_stdarg.h \
  /home/rafael/projects/chess3d/include/Move.h \
  /home/rafael/projects/chess3d/include/Piece.h \
  /home/rafael/projects/chess3d/include/Position.h \
@@ -163,4 +167,9 @@ CMakeFiles/chess.dir/src/main.cpp.obj: \
  /usr/x86_64-w64-mingw32/include/c++/14.2.0/bits/vector.tcc \
  /home/rafael/projects/chess3d/include/Type.h \
  /home/rafael/projects/chess3d/include/Board.h \
- /home/rafael/projects/chess3d/include/Rules.h
+ /home/rafael/projects/chess3d/include/Last.h \
+ /home/rafael/projects/chess3d/include/Rules.h \
+ /home/rafael/projects/chess3d/include/Screen.h \
+ /home/rafael/projects/chess3d/include/Game.h \
+ /usr/x86_64-w64-mingw32/include/c++/14.2.0/optional \
+ /usr/x86_64-w64-mingw32/include/c++/14.2.0/bits/enable_special_members.h

@@ -267,6 +267,51 @@ CMakeFiles/chess.dir/src/Rules.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/chess.dir/src/Rules.cpp.s"
 	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rafael/projects/chess3d/src/Rules.cpp -o CMakeFiles/chess.dir/src/Rules.cpp.s
 
+CMakeFiles/chess.dir/src/Screen.cpp.obj: CMakeFiles/chess.dir/flags.make
+CMakeFiles/chess.dir/src/Screen.cpp.obj: CMakeFiles/chess.dir/includes_CXX.rsp
+CMakeFiles/chess.dir/src/Screen.cpp.obj: /home/rafael/projects/chess3d/src/Screen.cpp
+CMakeFiles/chess.dir/src/Screen.cpp.obj: CMakeFiles/chess.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/rafael/projects/chess3d/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/chess.dir/src/Screen.cpp.obj"
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/chess.dir/src/Screen.cpp.obj -MF CMakeFiles/chess.dir/src/Screen.cpp.obj.d -o CMakeFiles/chess.dir/src/Screen.cpp.obj -c /home/rafael/projects/chess3d/src/Screen.cpp
+
+CMakeFiles/chess.dir/src/Screen.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/chess.dir/src/Screen.cpp.i"
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rafael/projects/chess3d/src/Screen.cpp > CMakeFiles/chess.dir/src/Screen.cpp.i
+
+CMakeFiles/chess.dir/src/Screen.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/chess.dir/src/Screen.cpp.s"
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rafael/projects/chess3d/src/Screen.cpp -o CMakeFiles/chess.dir/src/Screen.cpp.s
+
+CMakeFiles/chess.dir/src/Game.cpp.obj: CMakeFiles/chess.dir/flags.make
+CMakeFiles/chess.dir/src/Game.cpp.obj: CMakeFiles/chess.dir/includes_CXX.rsp
+CMakeFiles/chess.dir/src/Game.cpp.obj: /home/rafael/projects/chess3d/src/Game.cpp
+CMakeFiles/chess.dir/src/Game.cpp.obj: CMakeFiles/chess.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/rafael/projects/chess3d/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/chess.dir/src/Game.cpp.obj"
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/chess.dir/src/Game.cpp.obj -MF CMakeFiles/chess.dir/src/Game.cpp.obj.d -o CMakeFiles/chess.dir/src/Game.cpp.obj -c /home/rafael/projects/chess3d/src/Game.cpp
+
+CMakeFiles/chess.dir/src/Game.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/chess.dir/src/Game.cpp.i"
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rafael/projects/chess3d/src/Game.cpp > CMakeFiles/chess.dir/src/Game.cpp.i
+
+CMakeFiles/chess.dir/src/Game.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/chess.dir/src/Game.cpp.s"
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rafael/projects/chess3d/src/Game.cpp -o CMakeFiles/chess.dir/src/Game.cpp.s
+
+CMakeFiles/chess.dir/utils/utils.cpp.obj: CMakeFiles/chess.dir/flags.make
+CMakeFiles/chess.dir/utils/utils.cpp.obj: CMakeFiles/chess.dir/includes_CXX.rsp
+CMakeFiles/chess.dir/utils/utils.cpp.obj: /home/rafael/projects/chess3d/utils/utils.cpp
+CMakeFiles/chess.dir/utils/utils.cpp.obj: CMakeFiles/chess.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/rafael/projects/chess3d/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/chess.dir/utils/utils.cpp.obj"
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/chess.dir/utils/utils.cpp.obj -MF CMakeFiles/chess.dir/utils/utils.cpp.obj.d -o CMakeFiles/chess.dir/utils/utils.cpp.obj -c /home/rafael/projects/chess3d/utils/utils.cpp
+
+CMakeFiles/chess.dir/utils/utils.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/chess.dir/utils/utils.cpp.i"
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rafael/projects/chess3d/utils/utils.cpp > CMakeFiles/chess.dir/utils/utils.cpp.i
+
+CMakeFiles/chess.dir/utils/utils.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/chess.dir/utils/utils.cpp.s"
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rafael/projects/chess3d/utils/utils.cpp -o CMakeFiles/chess.dir/utils/utils.cpp.s
+
 # Object files for target chess
 chess_OBJECTS = \
 "CMakeFiles/chess.dir/src/main.cpp.obj" \
@@ -281,7 +326,10 @@ chess_OBJECTS = \
 "CMakeFiles/chess.dir/src/pieces/Knight.cpp.obj" \
 "CMakeFiles/chess.dir/src/pieces/King.cpp.obj" \
 "CMakeFiles/chess.dir/src/pieces/Pawn.cpp.obj" \
-"CMakeFiles/chess.dir/src/Rules.cpp.obj"
+"CMakeFiles/chess.dir/src/Rules.cpp.obj" \
+"CMakeFiles/chess.dir/src/Screen.cpp.obj" \
+"CMakeFiles/chess.dir/src/Game.cpp.obj" \
+"CMakeFiles/chess.dir/utils/utils.cpp.obj"
 
 # External object files for target chess
 chess_EXTERNAL_OBJECTS =
@@ -299,12 +347,15 @@ chess.exe: CMakeFiles/chess.dir/src/pieces/Knight.cpp.obj
 chess.exe: CMakeFiles/chess.dir/src/pieces/King.cpp.obj
 chess.exe: CMakeFiles/chess.dir/src/pieces/Pawn.cpp.obj
 chess.exe: CMakeFiles/chess.dir/src/Rules.cpp.obj
+chess.exe: CMakeFiles/chess.dir/src/Screen.cpp.obj
+chess.exe: CMakeFiles/chess.dir/src/Game.cpp.obj
+chess.exe: CMakeFiles/chess.dir/utils/utils.cpp.obj
 chess.exe: CMakeFiles/chess.dir/build.make
 chess.exe: /home/rafael/raylib-windows/lib/libraylib.a
 chess.exe: CMakeFiles/chess.dir/linkLibs.rsp
 chess.exe: CMakeFiles/chess.dir/objects1.rsp
 chess.exe: CMakeFiles/chess.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/rafael/projects/chess3d/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX executable chess.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/rafael/projects/chess3d/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Linking CXX executable chess.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/chess.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

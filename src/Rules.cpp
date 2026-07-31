@@ -13,10 +13,10 @@ namespace Rules {
         std::vector<Piece*> pieces = board.getPieces();
 
         for (auto piece : pieces) {
-            if (piece->getColor() == color) {
+            if (piece->getSide() == color || piece->isAlive() == false) {
                 continue;
             }
-            if (board.canMove(piece, king->getPosicao(), piece->getColor())) {
+            if (board.canMove(piece, king->getPosicao(), piece->getSide())) {
                 return true;
             }
         }
@@ -25,7 +25,7 @@ namespace Rules {
 
     bool isKingAlive(const Board &board, Side color) {
         for (auto p : board.getPieces()) {
-            if (p->getType() == Type::King && p->getColor() == color) {
+            if (p->getType() == Type::King && p->getSide() == color) {
                 return true;
             }
         } return false;
@@ -52,7 +52,7 @@ namespace Rules {
         Piece* atackedpiece = board.whatIsInSpaceAt(to.x, to.y, to.z);
 
         bool freeto = atackedpiece == nullptr;
-        bool capture = !freeto && (atackedpiece->getColor() != color);
+        bool capture = !freeto && (atackedpiece->getSide() != color);
 
         return capture;
     }

@@ -34,6 +34,13 @@ add_executable(chess src/main.cpp
         include/Rules.h
         include/Last.h
         include/Last.h
+        src/Screen.cpp
+        include/Screen.h
+        include/Screen.h
+        src/Game.cpp
+        include/Game.h
+        utils/utils.cpp
+        utils/utils.h
 )
 
 

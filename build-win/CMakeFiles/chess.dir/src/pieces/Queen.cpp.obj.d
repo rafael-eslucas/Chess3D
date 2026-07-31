@@ -132,4 +132,49 @@ CMakeFiles/chess.dir/src/pieces/Queen.cpp.obj: \
  /usr/x86_64-w64-mingw32/include/c++/14.2.0/tr1/modified_bessel_func.tcc \
  /usr/x86_64-w64-mingw32/include/c++/14.2.0/tr1/poly_hermite.tcc \
  /usr/x86_64-w64-mingw32/include/c++/14.2.0/tr1/poly_laguerre.tcc \
- /usr/x86_64-w64-mingw32/include/c++/14.2.0/tr1/riemann_zeta.tcc
+ /usr/x86_64-w64-mingw32/include/c++/14.2.0/tr1/riemann_zeta.tcc \
+ /usr/x86_64-w64-mingw32/include/c++/14.2.0/iostream \
+ /usr/x86_64-w64-mingw32/include/c++/14.2.0/ostream \
+ /usr/x86_64-w64-mingw32/include/c++/14.2.0/ios \
+ /usr/x86_64-w64-mingw32/include/c++/14.2.0/exception \
+ /usr/x86_64-w64-mingw32/include/c++/14.2.0/bits/exception_ptr.h \
+ /usr/x86_64-w64-mingw32/include/c++/14.2.0/bits/cxxabi_init_exception.h \
+ /usr/x86_64-w64-mingw32/include/c++/14.2.0/typeinfo \
+ /usr/x86_64-w64-mingw32/include/c++/14.2.0/bits/nested_exception.h \
+ /usr/x86_64-w64-mingw32/include/c++/14.2.0/bits/ios_base.h \
+ /usr/x86_64-w64-mingw32/include/c++/14.2.0/ext/atomicity.h \
+ /usr/x86_64-w64-mingw32/include/c++/14.2.0/x86_64-w64-mingw32/bits/gthr.h \
+ /usr/x86_64-w64-mingw32/include/c++/14.2.0/x86_64-w64-mingw32/bits/gthr-default.h \
+ /usr/x86_64-w64-mingw32/include/pthread.h \
+ /usr/x86_64-w64-mingw32/include/sys/types.h \
+ /usr/x86_64-w64-mingw32/include/process.h \
+ /usr/x86_64-w64-mingw32/include/corecrt_startup.h \
+ /usr/x86_64-w64-mingw32/include/signal.h \
+ /usr/x86_64-w64-mingw32/include/pthread_signal.h \
+ /usr/x86_64-w64-mingw32/include/time.h \
+ /usr/x86_64-w64-mingw32/include/sys/timeb.h \
+ /usr/x86_64-w64-mingw32/include/sec_api/sys/timeb_s.h \
+ /usr/x86_64-w64-mingw32/include/_timeval.h \
+ /usr/x86_64-w64-mingw32/include/pthread_time.h \
+ /usr/x86_64-w64-mingw32/include/pthread_compat.h \
+ /usr/x86_64-w64-mingw32/include/pthread_unistd.h \
+ /usr/x86_64-w64-mingw32/include/c++/14.2.0/x86_64-w64-mingw32/bits/atomic_word.h \
+ /usr/x86_64-w64-mingw32/include/c++/14.2.0/bits/locale_classes.h \
+ /usr/x86_64-w64-mingw32/include/c++/14.2.0/bits/locale_classes.tcc \
+ /usr/x86_64-w64-mingw32/include/c++/14.2.0/system_error \
+ /usr/x86_64-w64-mingw32/include/c++/14.2.0/x86_64-w64-mingw32/bits/error_constants.h \
+ /usr/x86_64-w64-mingw32/include/c++/14.2.0/stdexcept \
+ /usr/x86_64-w64-mingw32/include/c++/14.2.0/streambuf \
+ /usr/x86_64-w64-mingw32/include/c++/14.2.0/bits/streambuf.tcc \
+ /usr/x86_64-w64-mingw32/include/c++/14.2.0/bits/basic_ios.h \
+ /usr/x86_64-w64-mingw32/include/c++/14.2.0/bits/locale_facets.h \
+ /usr/x86_64-w64-mingw32/include/c++/14.2.0/cwctype \
+ /usr/x86_64-w64-mingw32/include/wctype.h \
+ /usr/x86_64-w64-mingw32/include/c++/14.2.0/x86_64-w64-mingw32/bits/ctype_base.h \
+ /usr/x86_64-w64-mingw32/include/c++/14.2.0/bits/streambuf_iterator.h \
+ /usr/x86_64-w64-mingw32/include/c++/14.2.0/x86_64-w64-mingw32/bits/ctype_inline.h \
+ /usr/x86_64-w64-mingw32/include/c++/14.2.0/bits/locale_facets.tcc \
+ /usr/x86_64-w64-mingw32/include/c++/14.2.0/bits/basic_ios.tcc \
+ /usr/x86_64-w64-mingw32/include/c++/14.2.0/bits/ostream.tcc \
+ /usr/x86_64-w64-mingw32/include/c++/14.2.0/istream \
+ /usr/x86_64-w64-mingw32/include/c++/14.2.0/bits/istream.tcc

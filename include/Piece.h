@@ -19,7 +19,7 @@ class Piece {
         virtual bool isValid(const Position& to) = 0;
         Position getPosicao();
         void setPosicao(const Position& p);
-        Side getColor();
+        Side getSide();
         Type getType();
         virtual std::vector<Position> route(Position para) = 0;
         std::string getId();

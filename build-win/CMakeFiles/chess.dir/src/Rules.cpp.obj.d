@@ -119,6 +119,7 @@ CMakeFiles/chess.dir/src/Rules.cpp.obj: \
  /home/rafael/projects/chess3d/include/Vector.h \
  /home/rafael/projects/chess3d/include/Side.h \
  /home/rafael/projects/chess3d/include/Type.h \
+ /home/rafael/projects/chess3d/include/Last.h \
  /usr/x86_64-w64-mingw32/include/c++/14.2.0/filesystem \
  /usr/x86_64-w64-mingw32/include/c++/14.2.0/bits/fs_fwd.h \
  /usr/x86_64-w64-mingw32/include/c++/14.2.0/system_error \
