@@ -1,4 +1,4 @@
-#include "Knight.h"
+#include "pieces/Knight.h"
 #include <cmath>
 
 bool Knight::isValid(const Position& to) {

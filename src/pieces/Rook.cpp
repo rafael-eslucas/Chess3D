@@ -1,5 +1,5 @@
-#include "Rook.h"
-#include "Vector.h"
+#include "pieces/Rook.h"
+#include "engine/Vector.h"
 #include <cmath>
 
 bool Rook::isValid(const Position& to) {

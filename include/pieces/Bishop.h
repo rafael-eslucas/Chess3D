@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Side.h"
-#include "Piece.h"
+#include "../engine/Side.h"
+#include "../engine/Piece.h"
 #include <vector>
 
 class Bishop : public Piece {

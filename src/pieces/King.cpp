@@ -1,5 +1,5 @@
-#include "King.h"
-#include "Vector.h"
+#include "pieces/King.h"
+#include "engine/Vector.h"
 #include <cmath>
 
 bool King::isValid(const Position& to) {

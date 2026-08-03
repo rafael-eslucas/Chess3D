@@ -1,3 +1,0 @@
-/home/rafael/projects/chess3d/build-win/CMakeFiles/chess.dir
-/home/rafael/projects/chess3d/build-win/CMakeFiles/edit_cache.dir
-/home/rafael/projects/chess3d/build-win/CMakeFiles/rebuild_cache.dir

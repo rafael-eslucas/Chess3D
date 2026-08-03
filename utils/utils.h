@@ -1,6 +1,6 @@
 #pragma once
-#include "Side.h"
-#include "Type.h"
+#include "../include/engine/Side.h"
+#include "engine/Type.h"
 
 namespace utils {
     inline int idx(Type t) {

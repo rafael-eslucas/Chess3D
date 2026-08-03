@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Piece.h"
+#include "../engine/Piece.h"
 
 class King : public Piece {
     public:

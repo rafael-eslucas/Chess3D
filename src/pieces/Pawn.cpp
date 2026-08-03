@@ -1,6 +1,7 @@
 #include <iostream>
-#include "Pawn.h"
+#include "pieces/Pawn.h"
 #include <cmath>
+#include <vector>
 
 bool Pawn::isValid(const Position& to) {
     Vector d = to - pos;
@@ -8,6 +9,8 @@ bool Pawn::isValid(const Position& to) {
 
     if (color == Side::White) return (d.x == 0 && d.y == 0 && d.z == 1);
     if (color == Side::Black) return (d.x == 0 && d.y == 0 && d.z == -1);
+
+    return false;
 }
 
 std::vector<Position> Pawn::route(Position to) {

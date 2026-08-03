@@ -1,4 +1,4 @@
-#include "Queen.h"
+#include "pieces/Queen.h"
 #include <cmath>
 #include <iostream>
 #include <ostream>

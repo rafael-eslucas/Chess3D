@@ -1,6 +1,6 @@
-#include "Bishop.h"
+#include "pieces/Bishop.h"
 #include <cmath>
-#include "Vector.h"
+#include "engine/Vector.h"
 
 bool Bishop::isValid(const Position& to) {
     Vector d = this->pos - to;

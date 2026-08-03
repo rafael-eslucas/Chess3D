@@ -11,4 +11,30 @@
 
 
 # Mine
-Chess3D-SHARE/
+release/
+
+cmake-build-debug/
+
+# Arquivos gerados pelo CMake
+CMakeUserPresets.json
+
+# Cache do CLion
+.idea/
+
+# Banco de compilação (opcional)
+compile_commands.json
+
+# Arquivos temporários
+*.o
+*.obj
+*.a
+*.so
+*.dll
+*.exe
+*.out
+
+# Logs
+*.log
+
+# Zip de releases
+release/*.zip

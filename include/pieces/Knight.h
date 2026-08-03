@@ -2,10 +2,10 @@
 
 #include <vector>
 
-#include "Side.h"
-#include "Piece.h"
-#include "Position.h"
-#include "Type.h"
+#include "../engine/Side.h"
+#include "../engine/Piece.h"
+#include "engine/Position.h"
+#include "engine/Type.h"
 
 class Knight : public Piece {
     public:
