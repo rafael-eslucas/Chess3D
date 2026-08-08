@@ -1,0 +1,29 @@
+.white {
+    background-color: #AAAAAA;
+}
+
+.black {
+    background-color: #555555;
+}
+
+.square {
+    width: 3.3vw;
+    height: 3.3vw;
+}
+
+.line {
+    display: flex;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.centralized {
+    justify-content: center;
+}
+
+.gapped {
+    gap: 5vw;
+}

@@ -12,26 +12,27 @@ void Screen::show(Game& game) {
     SetConfigFlags(FLAG_WINDOW_RESIZABLE);
     InitWindow(screenWidth, screenHeight, "Chess3D");
     SetTargetFPS(40);
+    bool connected = false;
+
     for (auto piece : game.getBoard()->getPieces()) {
         std::string path = "assets/textures/" + piece->getId().substr(0,2) + ".png";
-        std::cout<< path <<std::endl;
         textures[utils::idx(piece->getSide())][utils::idx(piece->getType())] = LoadTexture(path.c_str());
     }
 
     while (!WindowShouldClose()) {
         if (state == ScreenState::welcome)
             welcome();
-        if (state == ScreenState::play)
-            play(game);
+        if (state == ScreenState::offline)
+            offline(game);
+        if (state == ScreenState::online)
+            online(game, connected);
 
         screenWidth = GetScreenWidth();
         screenHeight = GetScreenHeight();
         MARGIN_X = (screenWidth - 3 * BOARD_SIZE) / 6.0f;
         MARGIN_Y = (screenHeight - 2 * BOARD_SIZE) / 5.0f;
-        CELL_SIZE = (50.0f/1280.0f) * screenWidth;
+        /*CELL_SIZE = (50.0f/1280.0f) * screenWidth;*/
     }
-    UnloadTexture(textures[utils::idx(Side::Black)][utils::idx(Type::Pawn)]);
-    UnloadTexture(textures[utils::idx(Side::White)][utils::idx(Type::Pawn)]);
     CloseWindow();
 }
 
@@ -45,22 +46,30 @@ void Screen::welcome() {
         50,
              BLACK);
 
-    float playposx = (screenWidth - MeasureText("Play", PARAGRAPH_SIZE)) / 2;
-    float playposy = screenHeight*2/3;
-    Rectangle button = {playposx, playposy, float(MeasureText("Play", 50)), 50};
-    DrawText("Play", playposx, playposy, PARAGRAPH_SIZE, BLACK);
+    float offlineposx= (screenWidth - MeasureText("Play offline", PARAGRAPH_SIZE)) / 2;
+    float offlineposy = screenHeight*2/3;
+    Rectangle offlinebutton = {offlineposx, offlineposy, float(MeasureText("Play offline", 50)), 50};
+    DrawText("Play offline", offlineposx, offlineposy, PARAGRAPH_SIZE, BLACK);
+
+    float onlineposx = (screenWidth - MeasureText("Play online", PARAGRAPH_SIZE)) / 2;
+    float onlineposy = screenHeight*3/4;
+    Rectangle onlinebutton = {onlineposx, onlineposy, float(MeasureText("Play online", 50)), 50};
+    DrawText("Play online", onlineposx, onlineposy, PARAGRAPH_SIZE, GRAY);
 
     if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
         Vector2 mouse = GetMousePosition();
 
-        if (CheckCollisionPointRec(mouse, button)) {
-            state = ScreenState::play;
+        if (CheckCollisionPointRec(mouse, offlinebutton)) {
+            state = ScreenState::offline;
+        }
+        if (CheckCollisionPointRec(mouse, onlinebutton)) {
+            state = ScreenState::online;
         }
     }
     EndDrawing();
 }
 
-void Screen::play(Game& game) {
+void Screen::offline(Game& game) {
     BeginDrawing();
     ClearBackground(RAYWHITE);
 
@@ -87,6 +96,44 @@ void Screen::play(Game& game) {
         }
     }
     EndDrawing();
+}
+
+void Screen::online(Game &game, bool connected) {
+    if (!connected) {
+        //connect();
+        return;
+    }
+    BeginDrawing();
+    ClearBackground(RAYWHITE);
+
+    drawBoard3D(game);
+
+    DrawText((game.getTurn() == Side::White? "White" : "Black"), 10, 10, 20, BLACK);
+
+    std::optional<Position> pos = IsAnyPositionBeingClickedAndIfYesWhichOne(game);
+    Piece* piece = game.getBoard()->whatIsInSpaceAt(pos->x, pos->y, pos->z);
+    if (pos) {
+        if (!selected) {
+            if (piece) {
+                if (piece->getSide() == game.getTurn()) {
+                    selected = game.getBoard()->whatIsInSpaceAt(pos->x, pos->y, pos->z);
+                }
+            }
+        } else {
+            this->to = *pos;
+            Move move(selected->getId(), to);
+            if (game.getBoard()->play(move, game.getTurn())) {
+                game.changeTurn();
+            }
+            selected = nullptr;
+        }
+    }
+    EndDrawing();
+
+}
+
+void connect () {
+
 }
 
 void Screen::drawBoard3D(Game& game) {

@@ -15,9 +15,6 @@ int main() {
     string movestr;
     Move move("", 0, 0, 0);
 
-    Side turno = Side::White;
-    Position pos;
-    Piece* selected;
     screen.show(game);
 
 

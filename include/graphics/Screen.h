@@ -8,7 +8,8 @@
 
 enum class ScreenState {
     welcome,
-    play
+    offline,
+    online,
 };
 
 class Screen {
@@ -38,7 +39,10 @@ class Screen {
             MARGIN_Y((screenHeight - 2 * BOARD_SIZE) / 5.0f) {}
         void show(Game& game);
         void welcome();
-        void play(Game& game);
+        void offline(Game& game);
+        void online(Game& game, bool connected);
+
+        void connect();
 
         void drawBoard2D(Game& game, int x, int y, int z);
         void drawBoard3D(Game& game);
