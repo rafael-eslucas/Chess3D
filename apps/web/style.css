@@ -27,3 +27,7 @@
 .gapped {
     gap: 5vw;
 }
+
+.square img {
+    width: 90%;
+}

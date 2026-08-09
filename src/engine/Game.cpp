@@ -16,3 +16,11 @@ Game::Game(){
     this->board = new Board();
     this->turn = Side::White;
 }
+
+bool Game::play(Move move, Side color) {
+    if (this->board->play(move, color)) {
+        this->changeTurn();
+        return true;
+    }
+    return false;
+}

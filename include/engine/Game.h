@@ -7,7 +7,10 @@ class Game {
     Board* board;
     public:
         Game();
-        Board* getBoard();
+
+    bool play(Move move, Side color);
+
+    Board* getBoard();
         void changeTurn();
         Side getTurn();
 };

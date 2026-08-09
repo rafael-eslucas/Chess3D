@@ -78,8 +78,8 @@ void Screen::offline(Game& game) {
     DrawText((game.getTurn() == Side::White? "White" : "Black"), 10, 10, 20, BLACK);
 
     std::optional<Position> pos = IsAnyPositionBeingClickedAndIfYesWhichOne(game);
-    Piece* piece = game.getBoard()->whatIsInSpaceAt(pos->x, pos->y, pos->z);
     if (pos) {
+        Piece* piece = game.getBoard()->whatIsInSpaceAt(pos->x, pos->y, pos->z);
         if (!selected) {
             if (piece) {
                 if (piece->getSide() == game.getTurn()) {
@@ -89,16 +89,14 @@ void Screen::offline(Game& game) {
         } else {
             this->to = *pos;
             Move move(selected->getId(), to);
-            if (game.getBoard()->play(move, game.getTurn())) {
-                game.changeTurn();
-            }
+            game.play(move, game.getTurn());
             selected = nullptr;
         }
     }
     EndDrawing();
 }
 
-void Screen::online(Game &game, bool connected) {
+void Screen::online(Game &game, const bool connected) {                //ainda em construção, ignora
     if (!connected) {
         //connect();
         return;
