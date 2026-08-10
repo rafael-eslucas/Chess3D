@@ -73,13 +73,12 @@ add_library(chess_engine STATIC
         src/engine/Game.cpp
         include/engine/Game.h
         utils/utils.h
+        include/engine/Player.h
 )
 
 add_executable(chess_desktop apps/chess_desktop.cpp
         include/graphics/Screen.h
         src/graphics/Screen.cpp
-        include/engine/Player.cpp
-        include/engine/Player.h
 )
 
 target_link_libraries(chess_desktop PRIVATE

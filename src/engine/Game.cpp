@@ -1,3 +1,4 @@
+#include <format>
 #include "engine/Game.h"
 
 Board *Game::getBoard() {
@@ -15,6 +16,8 @@ void Game::changeTurn() {
 Game::Game(){
     this->board = new Board();
     this->turn = Side::White;
+    this->white = nullptr;
+    this->black = nullptr;
 }
 
 bool Game::play(Move move, Side color) {
@@ -23,4 +26,28 @@ bool Game::play(Move move, Side color) {
         return true;
     }
     return false;
+}
+
+std::string Game::getId() {
+    return id;
+}
+
+void Game::setId(int n) {
+    this->id = std::format("{:02X}", n);
+    std::cout << this->id << std::endl;
+}
+
+Player *Game::getWhitePlayer() {
+    return this->white;
+}
+
+Player *Game::getBlackPlayer() {
+    return this->black;
+}
+
+void Game::setBlackPlayer(Player *player) {
+    black = player;
+}
+void Game::setWhitePlayer(Player *player) {
+    white = player;
 }

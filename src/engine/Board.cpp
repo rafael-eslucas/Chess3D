@@ -87,6 +87,9 @@ Board::~Board() {
 bool Board::move(Move move, Side color) {
     std::string id = move.getId();
     Piece* piece = whichPieceIsThis(id);
+    if (!piece) {
+        return false;
+    }
     std::cout << "Piece " << piece->getId() << " is being moved" << std::endl;
     if (!piece) {
         return false;

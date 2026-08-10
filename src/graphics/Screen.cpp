@@ -109,8 +109,9 @@ void Screen::online(Game &game, const bool connected) {                //ainda e
     DrawText((game.getTurn() == Side::White? "White" : "Black"), 10, 10, 20, BLACK);
 
     std::optional<Position> pos = IsAnyPositionBeingClickedAndIfYesWhichOne(game);
-    Piece* piece = game.getBoard()->whatIsInSpaceAt(pos->x, pos->y, pos->z);
+
     if (pos) {
+        Piece* piece = game.getBoard()->whatIsInSpaceAt(pos->x, pos->y, pos->z);
         if (!selected) {
             if (piece) {
                 if (piece->getSide() == game.getTurn()) {

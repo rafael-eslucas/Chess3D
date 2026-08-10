@@ -1,11 +1,10 @@
 const socket = new WebSocket("/ws");
 
-let turn;
-
-let boards = document.querySelectorAll(".board2d");
-
+let turn = null;
+let id = null;
 let ip = "192.168.3.138";
 
+let boards = document.querySelectorAll(".board2d");
 let move = {
     from: {
         x: null,
@@ -19,33 +18,95 @@ let move = {
     }
 }
 
-
 socket.onopen = async () => {
     console.log("CONNECTED!!!");
-    turn = await getTurn();
-    drawBoard();
-    drawPieces();
-    drawText(turn);
+    while (true) {
+        let whattodo = prompt("Type 'new' to create a new room or type 'join' to join an existing one");
+        if (whattodo === "new") {
+            newGame();
+            move["color"] = "WHITE";
+            break;
+        } else if (whattodo === "join") {
+            joinGame();
+            move["color"] = "BLACK";
+            break;
+        }
+    }
 }
-socket.onclose = (event) => {
+socket.onclose = () => {
     console.log("CONNECTION CLOSED");
 }
 socket.onmessage = async (event) => {
+    console.log("RECEBI:", event.data);
     const message = JSON.parse(event.data);
-    turn = await getTurn();
-    drawPieces();
-    drawText(turn);
+
+    if (message.type === "new" && message.success) {
+        console.log("CRIANDO JOGO, ID =", message.id);
+        id = message.id;
+        move["id"] = id;
+        console.log("ID: ", id);
+        console.log("CALLING DRAWBOARD");
+        drawBoard();
+        turn = await getTurn();
+        await drawPieces();
+        drawText(turn.turn);
+    }
+
+    if (message.type === "join" && message.success) {
+        console.log("JOINING");
+        id = message.id;
+        move["id"] = id;
+        console.log("ID: ", id);
+        console.log("CALLING DRAWBOARD");
+        images = document.querySelectorAll(".square img");
+        images.forEach(img => {
+            img.remove();
+        });
+        squares = document.querySelectorAll(".square");
+        squares.forEach(square => {
+            square.remove();
+        });
+        drawBoard();
+        turn = await getTurn();
+        await drawPieces();
+        drawText(turn.turn);
+        console.log("JOINED");
+    }
+
+    if (message.type === "move" && message.success) {
+        console.log("MOVED! REDRAWING...");
+        drawPieces();
+        turn = getTurn();
+        drawText(turn);
+    }
 }
 socket.onerror = (error) => {
     console.log("Deu erro aqui", error);
 }
 
-async function getTurn() {
-    let turn = await fetch("/getturn");
-    console.log(turn);
-    return turn.text();
+function newGame() {
+    let message = {
+        "type": "new",
+    }
+    console.log("NEWING");
+    socket.send(JSON.stringify(message));
+    console.log("NEWED");
 }
 
+function joinGame() {
+    id = prompt("Digite o ID da partida");
+    let message = {
+        "type": "join",
+        "id": id,
+    }
+    socket.send(JSON.stringify(message));
+}
+async function getTurn() {
+    let turn = await fetch(`/getturn/${id}`);
+    let data = await turn.json();
+    console.log(turn);
+    return data["turn"];
+}
 
 function makeSquareAButton (square) {
     console.log("MAKING IT A BUTTON");
@@ -55,7 +116,7 @@ function makeSquareAButton (square) {
     });
 }
 
-function select (square) {
+async function select (square) {
     console.log("SELECTING");
     const x = Number(square.dataset.x);
     const y = Number(square.dataset.y);
@@ -84,6 +145,7 @@ function select (square) {
 }
 
 async function play () {
+    console.log(JSON.stringify(move));
     const response = await fetch(`/move`, {
         method: "POST",
         headers: {
@@ -95,6 +157,7 @@ async function play () {
 }
 
 function drawBoard() {
+    console.log("DRAWINGBOARDING")
     let z = 0;
     boards.forEach(board => {
         for (let x = 0; x < 6; x++) {
@@ -128,7 +191,7 @@ function drawBoard() {
 }
 
 async function drawPieces() {
-    const response = await fetch(`/getspace`);
+    const response = await fetch(`/getspace/${id}`);
     const space = await response.json();
 
     for (let z = 0; z < 6; z++) {
@@ -158,6 +221,11 @@ async function drawPieces() {
 
 async function drawText(turn) {
     let turntext = document.getElementById("turn");
+    let youretext = document.getElementById("youre");
+    let gameidtext = document.getElementById("game");
+    gameidtext.textContent = id;
+    youretext.textContent = move["color"];
     turntext.textContent = turn;
+    console.log("Turn: ", turn);
     console.log("Text drawn");
 }

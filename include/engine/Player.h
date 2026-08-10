@@ -1,13 +1,22 @@
-//
-// Created by rafael on 09/08/2026.
-//
+#include <crow.h>
 
-#ifndef CHESS3D_PLAYER_H
-#define CHESS3D_PLAYER_H
+#pragma once
 
+class Game;
 
-class Player {
+struct Player {
+    Game& game;
+    Side side;
+
+    Player(Game& game, Side side) : game(game), side(side) {}
 };
 
+struct OnlinePlayer : Player {
+    crow::websocket::connection& conn;
 
-#endif //CHESS3D_PLAYER_H
+    OnlinePlayer(Game& game, crow::websocket::connection& conn, Side side) : Player(game, side), conn(conn) {};
+};
+
+struct OfflinePlayer : Player {
+    //vou descobrir ainda
+};
